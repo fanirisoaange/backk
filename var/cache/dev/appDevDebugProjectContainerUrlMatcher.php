@@ -107,32 +107,35 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/api/product')) {
-            // ws_create_product
-            if ('/api/product' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\ProductController::createProductAction',  '_route' => 'ws_create_product',);
+        elseif (0 === strpos($pathinfo, '/api')) {
+            if (0 === strpos($pathinfo, '/api/product')) {
+                // ws_create_product
+                if ('/api/product' === $pathinfo) {
+                    return array (  '_controller' => 'AppBundle\\Controller\\ProductController::createProductAction',  '_route' => 'ws_create_product',);
+                }
+
+                // ws_get_all_product
+                if ('/api/products' === $pathinfo) {
+                    return array (  '_controller' => 'AppBundle\\Controller\\ProductController::getProductsAction',  '_route' => 'ws_get_all_product',);
+                }
+
+                // ws_update_product
+                if (preg_match('#^/api/product/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'ws_update_product']), array (  '_controller' => 'AppBundle\\Controller\\ProductController::updateProductAction',));
+                }
+
             }
 
-            // ws_get_all_product
-            if ('/api/products' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\ProductController::getProductsAction',  '_route' => 'ws_get_all_product',);
-            }
-
-            // ws_update_product
-            if (preg_match('#^/api/product/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'ws_update_product']), array (  '_controller' => 'AppBundle\\Controller\\ProductController::updateProductAction',));
+            // ws_get_product
+            if (0 === strpos($pathinfo, '/api/getProduct') && preg_match('#^/api/getProduct/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'ws_get_product']), array (  '_controller' => 'AppBundle\\Controller\\ProductController::getProductAction',));
             }
 
             // ws_delete_product
-            if (preg_match('#^/api/product/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/api/deleteProduct') && preg_match('#^/api/deleteProduct/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'ws_delete_product']), array (  '_controller' => 'AppBundle\\Controller\\ProductController::deleteproductAction',));
             }
 
-        }
-
-        // ws_get_product
-        if (0 === strpos($pathinfo, '/api/getProduct') && preg_match('#^/api/getProduct/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, ['_route' => 'ws_get_product']), array (  '_controller' => 'AppBundle\\Controller\\ProductController::getProductAction',));
         }
 
         if ('/' === $pathinfo && !$allow) {

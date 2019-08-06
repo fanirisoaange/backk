@@ -1,13 +1,1 @@
-9e17f4,127.0.0.1,PUT,http://back.ws.loc/app_dev.php/api/product/1,1564976268,,200
-e04236,127.0.0.1,POST,http://back.ws.loc/app_dev.php/api/product/1,1564976279,,200
-500478,127.0.0.1,PUT,http://back.ws.loc/app_dev.php/api/product/1,1564976304,,200
-1dfd11,127.0.0.1,GET,http://back.ws.loc/app_dev.php/api/product/1,1564976394,805bec,200
-805bec,127.0.0.1,PUT,http://back.ws.loc/app_dev.php/api/product/1,1564976394,,500
-00f6ff,127.0.0.1,GET,http://back.ws.loc/app_dev.php/api/product/1,1564976496,221e12,200
-221e12,127.0.0.1,PUT,http://back.ws.loc/app_dev.php/api/product/1,1564976496,,500
-76762b,127.0.0.1,GET,http://back.ws.loc/app_dev.php/api/product/1,1564976577,ec2157,200
-ec2157,127.0.0.1,PUT,http://back.ws.loc/app_dev.php/api/product/1,1564976577,,500
-b0f6ba,127.0.0.1,PUT,http://back.ws.loc/app_dev.php/api/product/1,1564976610,,200
-dce2cf,127.0.0.1,GET,http://back.ws.loc/app_dev.php/api/product/1,1564976621,,200
-09d8cc,127.0.0.1,GET,http://back.ws.loc/app_dev.php/api/getProduct/1,1564976707,,200
-03a374,127.0.0.1,GET,http://back.ws.loc/app_dev.php/api/products,1565069076,,200
+7b1c77,127.0.0.1,DELETE,http://localhost:8000/api/products,1565097142,,200

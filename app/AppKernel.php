@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle(),
+            // new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\AopBundle\JMSAopBundle()
         ];
 

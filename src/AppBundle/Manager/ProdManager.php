@@ -38,7 +38,7 @@ class ProdManager implements ProductManagerInterface
             return "DO invalide";
         }*/
         $this->productRepository->save($product, true, true);
-        return $this->getSuccessMsg('Enregistrement avec success', $product->getId());
+        return $this->getSuccessMsg('Enregistrement avec success', $product);
     }
 
     public function updateProduct($id,$data)
@@ -57,7 +57,7 @@ class ProdManager implements ProductManagerInterface
             return $this->getErrorMsg("field error");
         }*/
         $this->productRepository->save($product, false, true);
-        return $this->getSuccessMsg('Enregistrement avec Succes', $product->getId());
+        return $this->getSuccessMsg('Enregistrement avec success', $product);
     }
 
 
@@ -69,7 +69,8 @@ class ProdManager implements ProductManagerInterface
 
     public function remove(int $id)
     {
-        $this->productRepository->delete($id);
+        $object = $this->productRepository->get($id);
+        $this->productRepository->remove($object);
         return $this->getSuccessMsg('Suppression avec succes', '');
     }
 

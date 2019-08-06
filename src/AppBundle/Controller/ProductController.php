@@ -53,9 +53,10 @@ class ProductController extends Controller
      * @Route("/api/products", name="ws_get_all_product")
      * @Method({"GET"})
      */
-    public function getProductsAction()
+    public function getProductsAction(Request $request)
     {
         $out = $this->get('manager.product')->getProducts();
+        // $products  = $this->get('knp_paginator')->paginate($out,$request->query->get('page',1), 5);
         return $this->renderToJson($out);
     }
 
@@ -89,12 +90,12 @@ class ProductController extends Controller
     /**
      * Delete product.
      *
-     * @Route("/api/product/{id}", name="ws_delete_product", requirements={"id": "\d+"})
+     * @Route("/api/deleteProduct/{id}", name="ws_delete_product", requirements={"id": "\d+"})
      * @Method({"DELETE"})
      */
     public function deleteproductAction($id)
     {
-        $out = $this->get('manager.product')->removeProduct($id);
+        $out = $this->get('manager.product')->remove($id);
         return $this->renderToJson($out);
     }
 
